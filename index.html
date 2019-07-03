@@ -1,0 +1,86 @@
+
+	<a href="test.html">op naar de testplaats</a>
+
+<body>
+
+	<h1 id="out"> hoi </h1>
+	<h2> hoi </h2>
+	<h3> hoi </h3>
+
+	<p id="demo"></p>
+
+
+
+
+	<button onclick="typeWriter(0, 25);">25</button>
+	<button onclick="if(typed==0)typeWriter(0, 50);">50</button>
+	<button onclick="if(typed==0)typeWriter(0, 100);">100</button>
+
+	<button onclick="Color(100);">color</button>
+<script>
+
+var i = 0;
+var txt = 'this text is lo'; /* The text */
+var speed = 25; /* The speed/duration of the effect in milliseconds */
+var typed = 0;
+function typeWriter(i, len)
+{
+if(!i)
+   {
+	document.getElementById("demo").innerHTML = '';
+   }
+
+if(i<len+txt.length)
+   {
+   if(i < txt.length)
+      {
+	   document.getElementById("demo").innerHTML += txt.charAt(i);
+      }
+   else
+      {
+      document.getElementById("demo").innerHTML += 'o';
+      }
+
+   setTimeout(function() { typeWriter(++i, len); },speed);
+   }
+
+   console.log('i='+i+' len='+len+' txtlen='+txt.length);
+
+if (i==len+txt.length)
+   {
+   document.getElementById("demo").innerHTML += 'ng';
+   }
+
+}
+
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+function Color(x)
+{
+if(x>0)
+   {     
+   var a = rand(0,255);
+   var b = rand(0,255);
+   var c = rand(0,255);
+   document.getElementById('demo').style.color = "rgb("+a+","+b+","+c+")"; 
+   setTimeout(function() { Color(x-1); }, 10);
+   }
+}
+
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+function rand(min,max)
+{
+return Math.floor(Math.random() * (max-min))+min;
+}
+
+</script>
+
+
+
+
+
+
+
+
+
+
+</body>
